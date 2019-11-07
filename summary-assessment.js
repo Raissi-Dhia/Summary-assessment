@@ -58,8 +58,12 @@ function each(coll, f) {
   //solve it using the most appropriate helper functions(reduce,each,map,filter).
   //wordLengths("hello its me") // [5,3,2]
   
+  // what we are going to do here is to split the string on each spacce to get an array containg each word and than the map will itterate over the array and returns the length of the words and pushed it into another array as we know (map returns array )
   function wordLengths(str) {
-      // TODO: your code here 
+      // TODO: your code here
+   return str.split(' ').map(function(element){
+       return element.length;
+   }) 
   }
   
   //=============================================================================
@@ -71,8 +75,16 @@ function each(coll, f) {
   // countOccurrences("hello", "l"); // 2
   // countOccurrences("hello, world!", "l"); // 3
   
+  // we split the string to get an array of evry character and we are going to set a condition after using the reduce (gives us a single value return ) that if the value itterated on equals to the character entered it add that counts that .
   function countOccurrences(string, character) {
       // your code is here
+      var array = string.split('')
+      return reduce(array , function(element , i){
+          if(i === character){ 
+            element += 1
+          }
+          return element;
+      },0)
   }
   
   //=============================================================================
@@ -82,10 +94,15 @@ function each(coll, f) {
   //with only the words of length that are longer than 3.
   //solve it using the most appropriate helper functions(reduce,each,map,filter).
   // wordsLongerThanThree("Hello Mad World") //["Hello", "World"]
+
+  // as always we split the string to get array and then we set a condition so whenever it itterates it checks the condition first if checked add the value to the new array (filter helps with conditions)
   
   function wordsLongerThanThree(str) {
       // TODO: your code here 
-  }
+       return str.split(' ').filter(function(element){
+        return element.length > 3 ;
+      })
+     }
   
   //=============================================================================
   /*                                  Q4                                        */
@@ -100,6 +117,14 @@ function each(coll, f) {
   
   function repeatString(str, count) { 
    // TODO: your code here 
+   if (count < 1) {
+    return "" ;
+   }else if (count === 1){
+    return str ;
+   }else{
+    return str + repeatString(str, count - 1);
+   }
+
   } 
    
   
@@ -130,6 +155,24 @@ function each(coll, f) {
   
   // Write your code here .....
   
+  function makePizza (crust , size , numberOfSlice){
+  var ingredients = []
+
+    return{
+     addIngredients : function(ingredient){        // pushing ingredients to the array 
+    return  ingredients.push(ingredient) ;
+     },
+       displayIngredients: function(){            // joining the array awith comma so it will be displayed as it was asked 
+        return ingredients.join(',');
+      },
+ 
+// im not pretty sure about the rest but i think it's going to be withe the settimeout function with a conditions  cooked or not 
+   }
+ 
+  }
+ 
+
+  
   //=============================================================================
   /*                                  Q6                                      */
   //=============================================================================
@@ -155,7 +198,28 @@ function each(coll, f) {
   // Now, to make sure that you are actually reading, make a comment below this and type: Yes I am
   
   // Write your code here .....
+  function ReadingList() {
+    var List = {}
+    List.read = 0;
+    List.unRead = 0;
+    List.toRead = [] ;
+    List.currentRead = '';
+    List.readBooks =[] ;
+    AddBook : AddBook
+
+    return List;
+  }
+
+  var AddBook =function(bookName){
+   this.toRead.push(bookName) ;
+   this.unRead ++ ;
+    
+  }
+  function finishCurrentBook(){
+    if(this.currentRead  !==''){
   
+
+  }
   //=============================================================================
   /*                                  Q7                                       */
   //=============================================================================
@@ -175,6 +239,7 @@ function each(coll, f) {
   //  safe('money','small') => "watch gold-bar money"
   
   // Write your code here .....
+// struggled a bit with this so i passed and when i came back to solve it ran out of time .. ill rework it and do a refactor push 
   
   //=============================================================================
   /*                                  Q8                                       */
